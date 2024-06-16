@@ -29,18 +29,24 @@
         private void InitializeComponent()
         {
             sidePanel = new Panel();
+            label3 = new Label();
+            label2 = new Label();
             mainPanel = new Panel();
+            jsonInputuc1 = new JSONInputUC();
+            jsonOutputuc1 = new JSONOutputUC();
             label1 = new Label();
-            textBox1 = new TextBox();
+            FilterPathValue = new TextBox();
             button1 = new Button();
-            richTextBox2 = new RichTextBox();
-            richTextBox1 = new RichTextBox();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            sidePanel.SuspendLayout();
             mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // sidePanel
             // 
             sidePanel.BackColor = Color.FromArgb(30, 30, 30);
+            sidePanel.Controls.Add(label3);
+            sidePanel.Controls.Add(label2);
             sidePanel.Dock = DockStyle.Left;
             sidePanel.ForeColor = SystemColors.Control;
             sidePanel.Location = new Point(0, 0);
@@ -48,19 +54,61 @@
             sidePanel.Size = new Size(200, 639);
             sidePanel.TabIndex = 0;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(30, 190, 169);
+            label3.Location = new Point(51, 134);
+            label3.Name = "label3";
+            label3.Size = new Size(114, 25);
+            label3.TabIndex = 7;
+            label3.Text = "JSON Assist";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(30, 30, 30);
+            label2.Font = new Font("Segoe UI", 80F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(30, 190, 169);
+            label2.Location = new Point(26, -8);
+            label2.Name = "label2";
+            label2.Size = new Size(168, 142);
+            label2.TabIndex = 7;
+            label2.Text = "{ }";
+            label2.TextAlign = ContentAlignment.TopCenter;
+            // 
             // mainPanel
             // 
             mainPanel.BackColor = Color.FromArgb(18, 18, 18);
+            mainPanel.Controls.Add(jsonInputuc1);
+            mainPanel.Controls.Add(jsonOutputuc1);
             mainPanel.Controls.Add(label1);
-            mainPanel.Controls.Add(textBox1);
+            mainPanel.Controls.Add(FilterPathValue);
             mainPanel.Controls.Add(button1);
-            mainPanel.Controls.Add(richTextBox2);
-            mainPanel.Controls.Add(richTextBox1);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(200, 0);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(1097, 639);
             mainPanel.TabIndex = 1;
+            // 
+            // jsonInputuc1
+            // 
+            jsonInputuc1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            jsonInputuc1.BorderStyle = BorderStyle.Fixed3D;
+            jsonInputuc1.Location = new Point(17, 139);
+            jsonInputuc1.Name = "jsonInputuc1";
+            jsonInputuc1.Size = new Size(453, 475);
+            jsonInputuc1.TabIndex = 6;
+            // 
+            // jsonOutputuc1
+            // 
+            jsonOutputuc1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            jsonOutputuc1.BorderStyle = BorderStyle.Fixed3D;
+            jsonOutputuc1.Location = new Point(632, 139);
+            jsonOutputuc1.Name = "jsonOutputuc1";
+            jsonOutputuc1.Size = new Size(453, 475);
+            jsonOutputuc1.TabIndex = 5;
             // 
             // label1
             // 
@@ -72,44 +120,30 @@
             label1.Text = "JSON Filter Path:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // FilterPathValue
             // 
-            textBox1.BackColor = Color.FromArgb(30, 30, 30);
-            textBox1.Location = new Point(17, 84);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(1068, 32);
-            textBox1.TabIndex = 3;
+            FilterPathValue.BackColor = Color.FromArgb(30, 30, 30);
+            FilterPathValue.Font = new Font("Segoe UI", 14F);
+            FilterPathValue.ForeColor = SystemColors.Control;
+            FilterPathValue.Location = new Point(17, 84);
+            FilterPathValue.Name = "FilterPathValue";
+            FilterPathValue.Size = new Size(1068, 32);
+            FilterPathValue.TabIndex = 3;
+            FilterPathValue.Text = "$";
+            FilterPathValue.TextChanged += FilterPathValue_TextChanged;
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(30, 190, 169);
+            button1.BackColor = Color.FromArgb(30, 30, 30);
             button1.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            button1.ForeColor = Color.FromArgb(30, 30, 30);
+            button1.ForeColor = Color.FromArgb(30, 190, 169);
             button1.Location = new Point(476, 139);
             button1.Name = "button1";
             button1.Size = new Size(150, 45);
             button1.TabIndex = 2;
             button1.Text = "Beautify";
             button1.UseVisualStyleBackColor = false;
-            // 
-            // richTextBox2
-            // 
-            richTextBox2.BackColor = Color.FromArgb(30, 30, 30);
-            richTextBox2.Location = new Point(632, 139);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(453, 475);
-            richTextBox2.TabIndex = 1;
-            richTextBox2.Text = "";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.BackColor = Color.FromArgb(30, 30, 30);
-            richTextBox1.ForeColor = SystemColors.Control;
-            richTextBox1.Location = new Point(17, 139);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(453, 475);
-            richTextBox1.TabIndex = 0;
-            richTextBox1.Text = "";
+            button1.Click += BeautifyJSON;
             // 
             // Form1
             // 
@@ -122,7 +156,9 @@
             ForeColor = SystemColors.Control;
             Margin = new Padding(5);
             Name = "Form1";
-            Text = "My Tools";
+            Text = "JSON Assist";
+            sidePanel.ResumeLayout(false);
+            sidePanel.PerformLayout();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
             ResumeLayout(false);
@@ -132,10 +168,13 @@
 
         private Panel sidePanel;
         private Panel mainPanel;
-        private RichTextBox richTextBox2;
-        private RichTextBox richTextBox1;
         private Button button1;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox FilterPathValue;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private JSONOutputUC jsonOutputuc1;
+        private JSONInputUC jsonInputuc1;
+        private Label label2;
+        private Label label3;
     }
 }
