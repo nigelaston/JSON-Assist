@@ -51,7 +51,7 @@
             sidePanel.ForeColor = SystemColors.Control;
             sidePanel.Location = new Point(0, 0);
             sidePanel.Name = "sidePanel";
-            sidePanel.Size = new Size(200, 639);
+            sidePanel.Size = new Size(200, 700);
             sidePanel.TabIndex = 0;
             // 
             // label3
@@ -89,7 +89,7 @@
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(200, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1097, 639);
+            mainPanel.Size = new Size(1097, 700);
             mainPanel.TabIndex = 1;
             // 
             // jsonInputuc1
@@ -98,16 +98,16 @@
             jsonInputuc1.BorderStyle = BorderStyle.Fixed3D;
             jsonInputuc1.Location = new Point(17, 139);
             jsonInputuc1.Name = "jsonInputuc1";
-            jsonInputuc1.Size = new Size(453, 475);
+            jsonInputuc1.Size = new Size(452, 549);
             jsonInputuc1.TabIndex = 6;
             // 
             // jsonOutputuc1
             // 
-            jsonOutputuc1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            jsonOutputuc1.Anchor = AnchorStyles.None;
             jsonOutputuc1.BorderStyle = BorderStyle.Fixed3D;
             jsonOutputuc1.Location = new Point(632, 139);
             jsonOutputuc1.Name = "jsonOutputuc1";
-            jsonOutputuc1.Size = new Size(453, 475);
+            jsonOutputuc1.Size = new Size(452, 549);
             jsonOutputuc1.TabIndex = 5;
             // 
             // label1
@@ -149,7 +149,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1297, 639);
+            ClientSize = new Size(1297, 700);
             Controls.Add(mainPanel);
             Controls.Add(sidePanel);
             Font = new Font("Segoe UI", 14F);
