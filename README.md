@@ -14,3 +14,5 @@ This is my first project on Git Hub. This will be a simple application that will
 26/03/2025 Updates
  - Implemented the ability to save JSON in a .JSON file locally.
  - Implemented the ability to load JSON from a local directory.
+![image](https://github.com/user-attachments/assets/5e374c03-2d30-4075-a2a5-01d96a820c2d)
+
