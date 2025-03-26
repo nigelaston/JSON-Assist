@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace My_Tools
 {
     public partial class JSONInputUC : UserControl
@@ -82,6 +84,11 @@ namespace My_Tools
         public string GetValues
         {
             get { return JSONInputTextbox.Text; }
+        }
+
+        public string SetValue
+        {
+            set { JSONInputTextbox.Text = value; }
         }
     }
 }
