@@ -32,12 +32,14 @@
             label3 = new Label();
             label2 = new Label();
             mainPanel = new Panel();
+            saveBtn = new Button();
             jsonInputuc1 = new JSONInputUC();
             jsonOutputuc1 = new JSONOutputUC();
             label1 = new Label();
             FilterPathValue = new TextBox();
-            button1 = new Button();
+            beautifyBtn = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            loadBtn = new Button();
             sidePanel.SuspendLayout();
             mainPanel.SuspendLayout();
             SuspendLayout();
@@ -51,7 +53,7 @@
             sidePanel.ForeColor = SystemColors.Control;
             sidePanel.Location = new Point(0, 0);
             sidePanel.Name = "sidePanel";
-            sidePanel.Size = new Size(200, 639);
+            sidePanel.Size = new Size(200, 700);
             sidePanel.TabIndex = 0;
             // 
             // label3
@@ -81,16 +83,31 @@
             // mainPanel
             // 
             mainPanel.BackColor = Color.FromArgb(18, 18, 18);
+            mainPanel.Controls.Add(loadBtn);
+            mainPanel.Controls.Add(saveBtn);
             mainPanel.Controls.Add(jsonInputuc1);
             mainPanel.Controls.Add(jsonOutputuc1);
             mainPanel.Controls.Add(label1);
             mainPanel.Controls.Add(FilterPathValue);
-            mainPanel.Controls.Add(button1);
+            mainPanel.Controls.Add(beautifyBtn);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(200, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1097, 639);
+            mainPanel.Size = new Size(1097, 700);
             mainPanel.TabIndex = 1;
+            // 
+            // saveBtn
+            // 
+            saveBtn.BackColor = Color.FromArgb(30, 30, 30);
+            saveBtn.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            saveBtn.ForeColor = Color.FromArgb(30, 190, 169);
+            saveBtn.Location = new Point(475, 190);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(150, 45);
+            saveBtn.TabIndex = 7;
+            saveBtn.Text = "Save";
+            saveBtn.UseVisualStyleBackColor = false;
+            saveBtn.Click += button2_Click;
             // 
             // jsonInputuc1
             // 
@@ -98,7 +115,7 @@
             jsonInputuc1.BorderStyle = BorderStyle.Fixed3D;
             jsonInputuc1.Location = new Point(17, 139);
             jsonInputuc1.Name = "jsonInputuc1";
-            jsonInputuc1.Size = new Size(453, 475);
+            jsonInputuc1.Size = new Size(452, 549);
             jsonInputuc1.TabIndex = 6;
             // 
             // jsonOutputuc1
@@ -107,7 +124,7 @@
             jsonOutputuc1.BorderStyle = BorderStyle.Fixed3D;
             jsonOutputuc1.Location = new Point(632, 139);
             jsonOutputuc1.Name = "jsonOutputuc1";
-            jsonOutputuc1.Size = new Size(453, 475);
+            jsonOutputuc1.Size = new Size(452, 549);
             jsonOutputuc1.TabIndex = 5;
             // 
             // label1
@@ -132,29 +149,44 @@
             FilterPathValue.Text = "$";
             FilterPathValue.TextChanged += FilterPathValue_TextChanged;
             // 
-            // button1
+            // beautifyBtn
             // 
-            button1.BackColor = Color.FromArgb(30, 30, 30);
-            button1.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            button1.ForeColor = Color.FromArgb(30, 190, 169);
-            button1.Location = new Point(476, 139);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 45);
-            button1.TabIndex = 2;
-            button1.Text = "Beautify";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += BeautifyJSON;
+            beautifyBtn.BackColor = Color.FromArgb(30, 30, 30);
+            beautifyBtn.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            beautifyBtn.ForeColor = Color.FromArgb(30, 190, 169);
+            beautifyBtn.Location = new Point(476, 139);
+            beautifyBtn.Name = "beautifyBtn";
+            beautifyBtn.Size = new Size(150, 45);
+            beautifyBtn.TabIndex = 2;
+            beautifyBtn.Text = "Beautify";
+            beautifyBtn.UseVisualStyleBackColor = false;
+            beautifyBtn.Click += BeautifyJSON;
+            // 
+            // loadBtn
+            // 
+            loadBtn.BackColor = Color.FromArgb(30, 30, 30);
+            loadBtn.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            loadBtn.ForeColor = Color.FromArgb(30, 190, 169);
+            loadBtn.Location = new Point(475, 241);
+            loadBtn.Name = "loadBtn";
+            loadBtn.Size = new Size(150, 45);
+            loadBtn.TabIndex = 8;
+            loadBtn.Text = "Load";
+            loadBtn.UseVisualStyleBackColor = false;
+            loadBtn.Click += loadBtn_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1297, 639);
+            AutoSize = true;
+            ClientSize = new Size(1297, 700);
             Controls.Add(mainPanel);
             Controls.Add(sidePanel);
             Font = new Font("Segoe UI", 14F);
             ForeColor = SystemColors.Control;
             Margin = new Padding(5);
+            MaximizeBox = false;
             Name = "Form1";
             Text = "JSON Assist";
             sidePanel.ResumeLayout(false);
@@ -168,7 +200,9 @@
 
         private Panel sidePanel;
         private Panel mainPanel;
-        private Button button1;
+        private Button beautifyBtn;
+        private Button saveBtn;
+        private Button loadBtn;
         private Label label1;
         private TextBox FilterPathValue;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -176,5 +210,6 @@
         private JSONInputUC jsonInputuc1;
         private Label label2;
         private Label label3;
+        
     }
 }

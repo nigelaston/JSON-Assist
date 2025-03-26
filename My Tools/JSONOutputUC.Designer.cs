@@ -50,6 +50,7 @@
             jsonOutputTextbox.ForeColor = SystemColors.Control;
             jsonOutputTextbox.Location = new Point(25, 0);
             jsonOutputTextbox.Name = "jsonOutputTextbox";
+            jsonOutputTextbox.ReadOnly = true;
             jsonOutputTextbox.Size = new Size(522, 465);
             jsonOutputTextbox.TabIndex = 0;
             jsonOutputTextbox.Text = "";

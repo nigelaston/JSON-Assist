@@ -71,6 +71,7 @@
             JSONInputTextbox.Size = new Size(522, 465);
             JSONInputTextbox.TabIndex = 2;
             JSONInputTextbox.Text = "";
+            JSONInputTextbox.WordWrap = false;
             // 
             // JSONInputUC
             // 
