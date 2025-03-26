@@ -7,6 +7,10 @@ This is my first project on Git Hub. This will be a simple application that will
 
 16/06/24 Updates
  - Implemented the ability to beautify JSON
- - Implemented line numbers to the input and output areas
+ - Implemented line numbers in the input and output areas
  - Implemented the ability to filter JSON to the output area
 ![image](https://github.com/nigelaston/Code-Assist/assets/24512837/3bac1a85-dbb0-4205-9a7b-989a4e04e444)
+
+26/03/2025 Updates
+ - Implemented the ability to save JSON in a .JSON file locally.
+ - Implemented the ability to load JSON from a local directory.
